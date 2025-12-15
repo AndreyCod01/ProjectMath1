@@ -1,0 +1,641 @@
+/*=============================================================
+ * style.css – стили для страницы «AI Руководства»
+ *============================================================*/
+
+/* Общие стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a4d2e; /* Темно-изумрудный */
+    color: #f5f5dc; /* Бежевый */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Предотвращаем горизонтальный скролл */
+    user-select: none; /* Добавлен user-select: none для всего body */
+}
+
+header {
+    background-color: #4caf50; /* Более светлый изумрудный для заголовка */
+    width: 99%;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px; /* Добавил отступ снизу для заголовка */
+    margin-top: 8px;
+    border-radius: 15px;
+    user-select: none;
+}
+
+h1, h2 {
+    color: #f5f5dc; /* Бежевый */
+    margin: 0;
+    user-select: none;
+}
+
+h1 {
+    font-size: 2.8em;
+}
+
+h2 {
+    font-size: 1.9em;
+    margin-bottom: 25px;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Изменено на column для правильного расположения блоков */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Стили для главной страницы */
+.difficulty-selection {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    user-select: none;
+
+    /* ---- одинаковая ширина -------------------------------------- */
+    width: 80%;           /* 80 % от ширины <main> */
+    max-width: 700px;     /* максимум 700 px, как в предыдущих стилях */
+}
+
+.difficulty-btn {
+    background-color: #f5f5dc; /* Бежевый */
+    color: #1a4d2e; /* Темно-изумрудный */
+    border: none;
+    padding: 18px 35px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    user-select: none;
+}
+
+.difficulty-btn:hover {
+    background-color: #fffacd;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили для игровых страниц (остаются без изменений) */
+.game-container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 700px;
+    user-select: none;
+}
+
+.start-btn {
+    background-color: #4caf50; /* Изумрудный */
+    color: #fff;
+    border: none;
+    padding: 25px 50px;
+    border-radius: 12px;
+    font-size: 1.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    user-select: none;
+}
+
+.start-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+}
+
+.question-area {
+    font-size: 3em;
+    margin-bottom: 30px;
+    min-height: 70px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+#question-placeholder {
+    font-size: 0.6em;
+    color: rgba(245, 245, 220, 0.6);
+    user-select: none;
+}
+
+.answer-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+    user-select: none;
+}
+
+#answer-input {
+    background-color: #f5f5dc;
+    color: #1a4d2e;
+    border: 2px solid #a0c49d;
+    padding: 18px 25px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    margin-right: 15px;
+    width: 180px;
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: text; /* Разрешаем выделение текста в поле ввода */
+}
+
+#answer-input:focus {
+    outline: none;
+    border-color: #66a366;
+    box-shadow: 0 0 15px rgba(102, 163, 102, 0.5);
+}
+
+.check-btn, .next-btn { /* Объединил стили для обеих кнопок */
+    background-color: #f5f5dc;
+    color: #1a4d2e;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    user-select: none;
+}
+
+.check-btn:hover, .next-btn:hover {
+    background-color: #fffacd;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.message-area {
+    font-size: 1.6em;
+    min-height: 50px;
+    margin-top: 20px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.correct {
+    color: #90ee90;
+}
+
+.incorrect {
+    color: #ff6347;
+}
+
+/* Таймер */
+.timer-container {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+}
+
+.timer-container:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+}
+
+#timer {
+    font-weight: bold;
+}
+
+/* Результат времени под сообщением */
+.time-result {
+    font-size: 1.2em;
+    color: #f5f5dc;
+    margin-top: 15px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    user-select: none;
+}
+
+.time-result.visible {
+    opacity: 1;
+}
+
+/* --- Стили для блока Руководства (модальное окно) --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7); /* Более плотный затемненный фон */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1000; /* Поверх всего */
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #1a4d2e; /* Тот же фон */
+    width: 90vw;
+    max-width: 700px; /* Ограничиваем ширину модалки */
+    max-height: 90vh;
+    padding: 40px; /* Больше отступов */
+    border-radius: 15px; /* Более скругленные углы */
+    color: #f5f5dc;
+    position: relative;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    box-shadow: 0 15px 30px rgba(0,0,0,.4); /* Более выраженная тень */
+}
+
+/* Стиль для закрытия модального окна */
+.modal-close {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 0; /* Больше отступ сверху */
+    background: #f5f5dc;
+    color: #1a4d2e;
+    border: none;
+    padding: 15px 35px; /* Больше кнопка */
+    border-radius: 10px; /* Скругленные углы кнопки */
+    font-size: 1.3em; /* Больше шрифт кнопки */
+    cursor: pointer;
+    transition: background .3s ease, transform .2s ease;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    user-select: none;
+}
+
+.modal-close:hover {
+    background: #ffefba;
+    transform: translateY(-2px);
+}
+
+/* Скролл‑бар внутри модалки */
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, .1);
+    border-radius: 5px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+    background: #ffefba;
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, .2);
+}
+.modal-content:hover::-webkit-scrollbar-thumb {
+    background: #f5f5dc;
+}
+.modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: #ffefba rgba(255, 255, 255, .1);
+}
+
+/* Оформление самих уравнений */
+.quad-equation, .lin-equation {
+    font-size: 2.2em; /* Большой шрифт для самих уравнений */
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    padding: 15px;
+    background: rgba(255, 255, 255, .1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .2);
+    user-select: none;
+}
+
+/* Группировка полей ввода */
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-group input[type="number"] {
+    font-size: 1.8em; /* Большой шрифт для ввода */
+    padding: 15px 20px; /* Увеличиваем поля ввода */
+    border: 2px solid #ffefba; /* Яркая рамка */
+    border-radius: 10px;
+    background: #1a4d2e; /* Фон как у модалки */
+    color: #f5f5dc;
+    margin: 0 5px; /* Небольшой отступ между полями */
+    width: 120px; /* Ширина полей */
+    text-align: center;
+    transition: all .3s ease;
+    user-select: text; /* Разрешаем выделение текста в поле ввода */
+}
+
+.input-group input[type="number"]:focus {
+    outline: none;
+    border-color: #f5f5dc;
+    box-shadow: 0 0 15px rgba(255, 239, 186, .5);
+}
+
+/* Стили для кнопки "Проверить" и "Следующий пример" */
+.check-btn, .next-btn {
+    display: block; /* Чтобы margin: auto работал */
+    width: fit-content;
+    margin: 30px auto; /* Центрируем */
+    background: #ffefba; /* Яркий фон */
+    color: #1a4d2e;
+    border: none;
+    padding: 18px 40px; /* Большие кнопки */
+    border-radius: 10px;
+    font-size: 1.4em; /* Большой шрифт */
+    cursor: pointer;
+    transition: background .3s ease, transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 7px 15px rgba(0,0,0,.2);
+    user-select: none;
+}
+
+.check-btn:hover, .next-btn:hover {
+    background: #f5f5dc;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.3);
+}
+
+/* Сообщения после проверки */
+#quad-msg, #lin-msg {
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 25px;
+    min-height: 1.3em; /* Чтобы блок не прыгал при смене текста */
+    user-select: none;
+}
+
+/* ========  Список карточек ======== */
+.guide-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; /* Больше расстояние между карточками */
+    justify-content: center;
+    margin: 40px 0;
+    padding: 0 20px; /* Отступы по бокам */
+}
+
+.guide-item {
+    flex-basis: calc(33.333% - 25px); /* Чуть меньше, чтобы лучше влезали */
+    min-width: 280px;
+    background: rgba(255, 255, 255, .12);
+    padding: 25px; /* Больше отступов */
+    border-radius: 15px; /* Скругленные углы */
+    text-align: center;
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .15);
+    position: relative;
+}
+
+.guide-item:hover {
+    transform: translateY(-8px); /* Больший подъем */
+    box-shadow: 0 18px 25px rgba(0, 0, 0, .3);
+}
+
+.guide-item h3 {
+    font-size: 1.7em; /* Крупнее */
+    margin-bottom: 15px;
+}
+
+.guide-item p {
+    font-size: 1.25em; /* Крупнее */
+    color: #eae0da;
+}
+
+.guide-item img {
+    display: none; /* Скрываем мини-картинки, если не нужны */
+}
+
+/* ======== Прогресс‑бар и кнопка возврата ======== */
+.scroll-progress {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 5px; /* Чуть толще */
+    background: #00e676;
+    width: 0;
+    transition: width .3s ease;
+    z-index: 9999;
+}
+
+.return-btn {
+    text-align: center;
+    margin: 50px 0 60px; /* Больше отступов */
+    font-size: 1.2em;
+}
+
+.return-btn a {
+    display: inline-block;
+    padding: 15px 35px;
+    background: #f5f5dc;
+    color: #1a4d2e;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background .3s ease, transform .2s ease;
+}
+
+.return-btn a:hover {
+    background: #ffefba;
+    transform: translateY(-2px);
+}
+
+/* --- НОВЫЕ СТИЛИ ДЛЯ КНОПКИ РУКОВОДСТВА (НА ГЛАВНОЙ) --- */
+.guide-block-container {
+    margin-top: 10px;          /* отступ от блока над ним */
+    width: 80%;                /* 80 % от той же ширины <main> */
+    max-width: 700px;          /* максимум 700 px – совпадает с предыдущими стилями */
+    display: flex;
+    justify-content: center;   /* центрируем кнопку внутри */
+}
+
+.guide-button {
+    display: flex; /* расположение текста */
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5dc;   /* белый */
+    color: #1a4d2e;             /* темно‑изумрудный */
+    border: none;
+    padding: 18px 35px;          /* такой же padding, как у .difficulty-btn */
+    border-radius: 10px;
+    font-size: 1.3em;            /* такой же размер шрифта */
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;       /* убираем underline от ссылки */
+    user-select: none;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+
+    /* Занимаем всю ширину контейнера, чтобы совпасть с .difficulty-selection */
+    width: 100%;
+}
+.guide-button-text {
+    font-weight: bold; /* Жирный шрифт */
+}
+
+/* Анимация при наведении на кнопку Руководства */
+.guide-button:hover {
+    background-color: #fffacd; /* Бежевый при наведении */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+/* --- КОНЕЦ НОВЫХ СТИЛЕЙ --- */
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 0;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    h2 {
+        font-size: 1.7em;
+    }
+    .difficulty-btn, .start-btn, .check-btn, .next-btn { /* Единая стилизация для кнопок */
+        padding: 15px 30px;
+        font-size: 1.1em;
+    }
+    .start-btn { /* Для кнопки старт на мобильных */
+        font-size: 1.5em;
+        padding: 20px 40px;
+    }
+    .question-area {
+        font-size: 2.2em;
+        min-height: 60px;
+    }
+    #answer-input {
+        width: 140px;
+        font-size: 1.2em;
+        padding: 15px 20px;
+    }
+    .timer-container {
+        font-size: 1.2em;
+        top: 15px;
+        right: 15px;
+        padding: 10px 20px;
+    }
+    .time-result {
+        font-size: 1.1em;
+    }
+    .difficulty-selection {
+        padding: 40px;
+        width: 90%; /* Делаем блок чуть шире на мобильных */
+    }
+    .game-container {
+        padding: 30px;
+    }
+
+    /* Адаптация модального окна */
+    .modal-content {
+        padding: 30px;
+    }
+    .modal-close {
+        padding: 12px 30px;
+        font-size: 1.1em;
+    }
+    .quad-equation, .lin-equation {
+        font-size: 1.8em;
+    }
+    .input-group input[type="number"] {
+        font-size: 1.4em;
+        padding: 12px 15px;
+        width: 100px;
+    }
+    .check-btn, .next-btn { /* Стилизация кнопок в модалке */
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+    #quad-msg, #lin-msg {
+        font-size: 1.2em;
+    }
+    /* Адаптация кнопки Руководства */
+    .guide-button {
+        padding: 12px 25px; /* Уменьшаем padding */
+        font-size: 1.2em; /* Уменьшаем шрифт */
+        width: 90%; /* Делаем кнопку шире на мобильных */
+    }
+}
+
+@media (max-width: 480px) {
+    .start-btn { /* Еще меньше на очень маленьких экранах */
+        font-size: 1.2em;
+        padding: 15px 30px;
+    }
+    /* Дополнительная адаптация для кнопок в модалке */
+    .modal-close {
+        font-size: 1em;
+        padding: 10px 25px;
+    }
+    .check-btn, .next-btn {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+    .input-group input[type="number"] {
+        font-size: 1.2em;
+        padding: 10px 12px;
+        width: 90px;
+    }
+    .quad-equation, .lin-equation {
+        font-size: 1.5em;
+    }
+    .guide-item {
+        min-width: 250px; /* Немного уменьшаем */
+    }
+    /* Кнопка руководства на маленьких экранах */
+    .guide-button {
+        font-size: 1.1em;
+        padding: 10px 20px;
+    }
+    /* --- Личный кабинет --- */
+.profile-btn-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.profile-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f5f5dc;
+    border: 1px solid #4caf50;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+}
